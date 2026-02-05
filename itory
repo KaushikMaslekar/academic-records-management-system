@@ -1,0 +1,11 @@
+[33mcommit d454693968fec7c4b9ab2a53e91ce46c5df01859[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Your Name <your.email@example.com>
+Date:   Thu Feb 5 19:45:13 2026 +0530
+
+    Adding new entities
+
+[33mcommit 61f63aeb2ab500d3b89d44a038a792bb8b0e2099[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Your Name <your.email@example.com>
+Date:   Wed Feb 4 19:21:41 2026 +0530
+
+    Initial commit: Student Management System with Spring Boot
