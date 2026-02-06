@@ -1,4 +1,4 @@
-package com.example.student_management_system.repository;
+package com.example.student_management_system.service;
 
 import java.util.Collections;
 
@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.student_management_system.entity.User;
+import com.example.student_management_system.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService { // This class implements the UserDetailsService interface, which is a core interface in Spring Security. It provides a method to load user-specific data.
@@ -22,9 +23,9 @@ public class CustomUserDetailsService implements UserDetailsService { // This cl
         User user = userRepository.findByUsername(username) // This line uses the UserRepository to find a user by their username. The findByUsername method is assumed to return an Optional<User>.
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
+        return new org.springframework.security.core.userdetails.User( // This line creates and returns a new UserDetails object using the Spring Security User class. It takes the username, password, active status, and authorities (roles) of the user to construct the UserDetails object.
+                user.getUsername(), // The username of the user, which is used for authentication.
+                user.getPassword(), // The password of the user, which is used for authentication. It should be stored in an encoded form in the database.
                 Boolean.TRUE.equals(user.getActive()),
                 true,
                 true,
