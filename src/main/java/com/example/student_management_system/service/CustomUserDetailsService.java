@@ -30,7 +30,8 @@ public class CustomUserDetailsService implements UserDetailsService { // This cl
                 true,
                 true,
                 true,
-                Collections.singleton(new SimpleGrantedAuthority(user.getRole())) //simpleGrantedAuthority is used to convert the role string into a GrantedAuthority object that Spring Security can understand.
+                Collections.singleton(new SimpleGrantedAuthority(user.getRole())) //simpleGrantedAuthority is used to convert the role string into a GrantedAuthority object that Spring Security can understand. 
+        //for example, if the user has a role of "ADMIN", it will create a SimpleGrantedAuthority with the authority "ADMIN". This allows Spring Security to manage access control based on the user's roles. 
         );
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.example.student_management_system.repository.CustomUserDetailsService;
+import com.example.student_management_system.service.CustomUserDetailsService;
 
 @Configuration // This annotation indicates that this class is a configuration class for Spring. It allows Spring to recognize it as a source of bean definitions and other configuration settings.
 @EnableWebSecurity // This annotation enables Spring Security's web security support and provides the Spring MVC integration. It allows you to configure web-based security for specific HTTP requests.
