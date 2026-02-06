@@ -24,13 +24,13 @@ public class SecurityConfig {
     private CustomUserDetailsService userDetailsService; // Injecting the CustomUserDetailsService to be used for authentication. This service will be responsible for loading user-specific data during the authentication process.
 
     @Bean // This annotation indicates that the method will return a bean that should be managed by the Spring container. In this case, it will return a PasswordEncoder bean.
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception { // This method configures the security filter chain for HTTP requests. It defines how requests should be secured and what authentication mechanisms to use.
         http
                 .csrf(csrf -> csrf.disable()) //CSRF (Cross-Site Request Forgery) protection is disabled here, which is common for stateless APIs that use token-based authentication. However, be cautious when disabling CSRF protection in web applications that have a user interface.
-                .authorizeHttpRequests(auth -> auth
+                .authorizeHttpRequests(auth -> auth // This line starts the configuration of authorization rules for HTTP requests. It allows you to specify which endpoints require authentication and what roles are needed to access them.
                 .requestMatchers("/api/auth/**").permitAll() // Allowing unauthenticated access to the authentication endpoints (e.g., login, register).
-                .requestMatchers("/api/students/**").hasAnyRole("ADMIN", "USER")
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/students/**").hasAnyRole("ADMIN", "USER") // Restricting access to student-related endpoints to users with either "ADMIN" or "USER" roles.
+                .requestMatchers("/api/admin/**").hasRole("ADMIN") // Restricting access to admin-related endpoints to users with the "ADMIN" role.
                 .anyRequest().authenticated() // Requiring authentication for any other requests.
 
                 )
@@ -39,9 +39,9 @@ public class SecurityConfig {
     }
 
     @Bean // This annotation indicates that the method will return a bean that should be managed by the Spring container. In this case, it will return a DaoAuthenticationProvider bean.
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
+    public DaoAuthenticationProvider authenticationProvider() { // This method configures a DaoAuthenticationProvider, which is an implementation of AuthenticationProvider that retrieves user details from a UserDetailsService and uses a PasswordEncoder to validate passwords.
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService); // This line creates a new instance of DaoAuthenticationProvider and sets the CustomUserDetailsService as the service to retrieve user details during authentication.
+        authProvider.setPasswordEncoder(passwordEncoder()); // This line sets the PasswordEncoder to be used by the authentication provider. It ensures that the passwords provided during authentication are encoded and compared with the encoded passwords stored in the database.
         return authProvider;
     }
 
