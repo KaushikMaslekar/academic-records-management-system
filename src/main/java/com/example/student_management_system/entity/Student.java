@@ -21,6 +21,10 @@ public class Student {
 
     private String course;
 
+    private String department;
+
+    private String teacher;
+
     private LocalDate enrollmentDate;
 
     public Student() {
@@ -72,5 +76,21 @@ public class Student {
 
     public void setEnrollmentDate(LocalDate enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 }

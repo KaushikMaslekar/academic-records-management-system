@@ -21,6 +21,10 @@ public class DepartmentService {
         return repository.save(department);
     }
 
+    public List<Department> addAll(List<Department> departments) {
+        return repository.saveAll(departments);
+    }
+
     public List<Department> getAll() {
         return repository.findAll();
     }

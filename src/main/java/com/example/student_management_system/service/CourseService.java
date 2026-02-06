@@ -21,6 +21,10 @@ public class CourseService {
         return repository.save(course);
     }
 
+    public List<Course> addAll(List<Course> courses) {
+        return repository.saveAll(courses);
+    }
+
     public List<Course> getAll() {
         return repository.findAll(); // Fetches all Course entities from the database
     }

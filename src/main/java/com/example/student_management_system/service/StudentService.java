@@ -17,11 +17,15 @@ public class StudentService {
         this.repository = repository;
     }
 
-    public Student add(Student student) {
+    public Student addStudent(Student student) {
         return repository.save(student);
     }
 
-    public List<Student> getAll() {
+    public List<Student> addAll(List<Student> students) {
+        return repository.saveAll(students);
+    }
+
+    public List<Student> getAllStudents() {
         return repository.findAll();
     }
 
@@ -35,16 +39,14 @@ public class StudentService {
             existing.setEmail(updated.getEmail());
             existing.setPhone(updated.getPhone());
             existing.setCourse(updated.getCourse());
+            existing.setDepartment(updated.getDepartment());
+            existing.setTeacher(updated.getTeacher());
             existing.setEnrollmentDate(updated.getEnrollmentDate());
             return repository.save(existing);
         });
     }
 
-    public boolean delete(String id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void deleteStudent(String id) {
+        repository.deleteById(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.student_management_system.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +29,12 @@ public class TeacherController {
     public ResponseEntity<Teacher> addTeacher(@RequestBody Teacher teacher) {
         Teacher saved = service.add(teacher);
         return ResponseEntity.created(URI.create("/api/teachers/" + saved.getId())).body(saved);
+    }
+
+    @PostMapping("/bulk")
+    public ResponseEntity<List<Teacher>> addTeachers(@RequestBody List<Teacher> teachers) {
+        List<Teacher> saved = service.addAll(teachers);
+        return ResponseEntity.ok(saved);
     }
 
     @GetMapping

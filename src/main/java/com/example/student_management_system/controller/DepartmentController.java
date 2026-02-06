@@ -33,6 +33,12 @@ public class DepartmentController {
         return ResponseEntity.created(URI.create("/api/departments/" + saved.getId())).body(saved);
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<List<Department>> addDepartments(@RequestBody List<Department> departments) {
+        List<Department> saved = service.addAll(departments);
+        return ResponseEntity.ok(saved);
+    }
+
     @GetMapping
     public ResponseEntity<List<Department>> getAllDepartments() {
         return ResponseEntity.ok(service.getAll());
@@ -47,7 +53,7 @@ public class DepartmentController {
 
     // .map(ResponseEntity::ok) is a method reference that transforms the Department object returned by service.getById(id) into a ResponseEntity with an HTTP status of 200 OK.
     // .orElse(ResponseEntity.notFound().build()) provides a fallback mechanism. If the Optional returned by service.getById(id) is empty (meaning no Department was found with the given id), this part of the code will execute, returning a ResponseEntity with an HTTP status of 404 Not Found.
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Department> updateDepartmentById(@PathVariable String id, @RequestBody Department department) {
         return service.update(id, department)
                 .map(ResponseEntity::ok)

@@ -9,16 +9,15 @@ public class Course {
     @Id
     private String id;
 
-    private String CourseCode;
-    private String CourseName;
-    private String Description;
-    private int Credits;
-    private String Department;
-    private String Semester;
-    private int MaxEnrollment;
+    private String courseCode;  // Changed from CourseCode
+    private String courseName;  // Changed from CourseName
+    private String description; // Changed from Description
+    private int credits;        // Changed from Credits
+    private String department;  // Changed from Department
+    private String semester;    // Changed from Semester
+    private int maxEnrollment;  // Changed from MaxEnrollment
 
     public Course() {
-
     }
 
     public String getId() {
@@ -30,59 +29,58 @@ public class Course {
     }
 
     public String getCourseCode() {
-        return CourseCode;
+        return courseCode;
     }
 
     public void setCourseCode(String courseCode) {
-        this.CourseCode = courseCode;
+        this.courseCode = courseCode;
     }
 
     public String getCourseName() {
-        return CourseName;
+        return courseName;
     }
 
     public void setCourseName(String courseName) {
-        this.CourseName = courseName;
+        this.courseName = courseName;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        this.Description = description;
+        this.description = description;
     }
 
     public int getCredits() {
-        return Credits;
+        return credits;
     }
 
     public void setCredits(int credits) {
-        this.Credits = credits;
+        this.credits = credits;
     }
 
     public String getDepartment() {
-        return Department;
+        return department;
     }
 
     public void setDepartment(String department) {
-        this.Department = department;
+        this.department = department;
     }
 
     public String getSemester() {
-        return Semester;
+        return semester;
     }
 
     public void setSemester(String semester) {
-        this.Semester = semester;
+        this.semester = semester;
     }
 
     public int getMaxEnrollment() {
-        return MaxEnrollment;
+        return maxEnrollment;
     }
 
     public void setMaxEnrollment(int maxEnrollment) {
-        this.MaxEnrollment = maxEnrollment;
+        this.maxEnrollment = maxEnrollment;
     }
-
 }

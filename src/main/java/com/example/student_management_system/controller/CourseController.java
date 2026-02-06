@@ -31,6 +31,12 @@ public class CourseController {
         return ResponseEntity.created(URI.create("/api/courses/" + saved.getId())).body(saved);
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<List<Course>> addCourses(@RequestBody List<Course> courses) {
+        List<Course> saved = service.addAll(courses);
+        return ResponseEntity.ok(saved);
+    }
+
     @GetMapping
     public ResponseEntity<List<Course>> getAllCourse() {
         return ResponseEntity.ok(service.getAll());

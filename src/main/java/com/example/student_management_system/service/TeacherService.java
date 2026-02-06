@@ -21,6 +21,10 @@ public class TeacherService {
         return repository.save(teacher);
     }
 
+    public List<Teacher> addAll(List<Teacher> teachers) {
+        return repository.saveAll(teachers);
+    }
+
     public List<Teacher> getAll() {
         return repository.findAll();
     }
